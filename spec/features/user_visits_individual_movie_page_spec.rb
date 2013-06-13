@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe '' do
+describe 'movie show page' do
   let(:movie) { FactoryGirl.create(:movie) }
 
   it 'displays a movie title' do
