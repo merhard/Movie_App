@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'adding movies' do
+describe 'adding a movie' do
   it 'allows a user to add a movie' do
     visit new_movie_path
     fill_in 'Title', with: 'Title'
