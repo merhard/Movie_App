@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   def create 
     @movie = Movie.find(params[:movie_id])
     @review = Review.new(params[:review])
-
+    @review.movie_id = @movie.id 
     if @review.save
       redirect_to @movie, notice: "New Review Added!" 
     else

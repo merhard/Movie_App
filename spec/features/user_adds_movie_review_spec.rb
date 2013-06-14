@@ -15,11 +15,20 @@ describe 'movie reviews' do
 
     click_on('Add Review')
 
-    save_and_open_page
-
     expect(page).to have_content('Description')
+
 
   end
 
+  it "should create the review" do 
+
+    visit new_movie_review_path(movie)
+    fill_in 'Description',with: "This is a description"
+    fill_in 'Score', with: '2'
+
+    click_on 'Add Review'
+    expect(page).to have_content("New Review Added!")
+
+  end
 
 end
