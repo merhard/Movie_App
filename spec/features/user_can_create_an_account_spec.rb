@@ -5,4 +5,10 @@ describe 'creating an acoount' do
     visit root_path
     expect(page).to have_selector('a', text: 'Signup')
   end
+
+  it 'redirects to signup form' do
+    visit root_path
+    click_on 'Signup'
+    expect(page).to be(new_user_registration_path)
+  end
 end
