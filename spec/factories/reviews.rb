@@ -3,7 +3,9 @@
 FactoryGirl.define do
   factory :review do
     description "Movie Review Description"
-    movie_id 1
+    association :movie
+
+    # TODO: association for users once devise setup
     user_id 1
     score 1
   end
