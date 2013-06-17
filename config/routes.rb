@@ -1,8 +1,11 @@
 MoviesApp::Application.routes.draw do
+  get "votes/create"
+
   root to: 'movies#index'
 
-  resources :movies
-
+  resources :movies do
+    resources :votes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
