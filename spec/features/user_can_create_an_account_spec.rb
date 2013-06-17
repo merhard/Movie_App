@@ -9,6 +9,6 @@ describe 'creating an acoount' do
   it 'redirects to signup form' do
     visit root_path
     click_on 'Signup'
-    expect(page).to be(new_user_registration_path)
+    expect(page).to have_content('Sign up')
   end
 end
