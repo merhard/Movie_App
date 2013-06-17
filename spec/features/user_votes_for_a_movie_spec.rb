@@ -12,6 +12,6 @@ describe 'Voting for a movie' do
   it 'user votes for a movie' do
     prev_count = movie.votes.count
     click_button 'Vote'
-    expect(Like.count).to eql(prev_count + 1)
+    expect(Vote.count).to eql(prev_count + 1)
   end
 end
