@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe 'movie reviews' do
+  include Warden::Test::Helpers
+  Warden.test_mode!
+
   let(:movie) {FactoryGirl.create(:movie) }
 
   it "user can add a review" do
@@ -21,6 +24,8 @@ describe 'movie reviews' do
   end
 
   it "should create the review" do
+    user = FactoryGirl.create(:user)
+    login_as(user)
 
     visit new_movie_review_path(movie)
     fill_in 'Description',with: "This is a description"
@@ -28,7 +33,6 @@ describe 'movie reviews' do
 
     click_on 'Add Review'
     expect(page).to have_content("New Review Added!")
-
   end
 
 end

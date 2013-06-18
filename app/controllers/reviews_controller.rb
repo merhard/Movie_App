@@ -13,6 +13,9 @@ class ReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = Review.new(params[:review])
     @review.movie_id = @movie.id
+    binding.pry
+    @review.user = current_user
+
     if @review.save
       redirect_to @movie, notice: "New Review Added!"
     else
