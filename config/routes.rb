@@ -1,9 +1,13 @@
 MoviesApp::Application.routes.draw do
+  devise_for :users
+
   root to: 'movies#index'
 
   resources :movies do
     resources :reviews
   end
+
+
 
 
   # The priority is based upon order of creation:
