@@ -11,9 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find(params[:movie_id])
-    @review = Review.new(params[:review])
-    @review.movie_id = @movie.id
-    binding.pry
+    @review = @movie.reviews.build(params[:review])
     @review.user = current_user
 
     if @review.save
