@@ -1,7 +1,19 @@
 MoviesApp::Application.routes.draw do
+
   get "votes/create"
 
+
+
+  devise_for :users
+
   root to: 'movies#index'
+
+  resources :movies do
+    resources :reviews
+  end
+
+
+
 
   resources :movies do
     resources :votes
