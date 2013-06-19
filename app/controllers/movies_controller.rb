@@ -6,16 +6,10 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-<<<<<<< HEAD
+    
     @new_vote = @movie.votes.new 
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @movie }
-    end
-=======
     @reviews = @movie.reviews
->>>>>>> 6da2b389f90d7ad3cde71329546568597e4c754b
   end
 
   def new
