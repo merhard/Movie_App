@@ -9,7 +9,7 @@ class Movie < ActiveRecord::Base
 
 
 
-  def self.most_recent(amount)
+  def self.most_recent(amount = 3 )
     order('created_at DESC').limit(amount)
  
   end

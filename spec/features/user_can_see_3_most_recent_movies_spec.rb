@@ -1,15 +1,23 @@
 require 'spec_helper'
 
 
-describe 'viewing reviews' do 
+feature 'List of 3 recently added movies' do 
+
+  # As a logged in user
+  # I want to see a list of the 3 most recently added movies
+  # So that I know what is new and available for me to review
+
+  # -There is a list of the 3 most recently added movie on the homepage.
 
 
   it 'displays 3 most recently added films' do 
-    FactoryGirl.create_list(:movie,3)
+   movie = FactoryGirl.create_list(:movie,3)
     visit(movies_path)
   
     expect(page).to have_content("Most Recently Added")
-    page.should have_css("li",:count => 3)
+    expect(page).to have_content(movie[0].title)
+    expect(page).to have_content(movie[1].title)
+    expect(page).to have_content(movie[2].title)
  
   end
 end
