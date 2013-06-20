@@ -1,4 +1,13 @@
 <div class='review'>
   <%= review.description %>
   <%= review.score %>
+
+
+  <%= form_for [review, review.votes.new] do |f| %>
+    <%= f.submit 'Vote' %> 
+  <% end %>
+
+  <h2><%= review.votes.count %></h2>
+  
+
 </div>

@@ -1,14 +1,25 @@
 MoviesApp::Application.routes.draw do
+
+  get "votes/create"
+
   devise_for :users
 
   root to: 'movies#index'
 
   resources :movies do
-    resources :reviews
+    resources :reviews  
   end
 
+  resources :reviews do
+    resources :votes, controller: "ReviewsVotes"
+  end
 
+  # review_votes_path(review)         # => /reviews/:review_id/votes 
+  # review_vote_path(review, vote)    # => /reviews/:review_id/votes/:id
 
+  resources :movies do
+    resources :votes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

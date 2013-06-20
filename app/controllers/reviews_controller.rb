@@ -20,4 +20,9 @@ class ReviewsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def show
+    @review = Review.find(params[:id])
+    @new_review_vote = @review.votes.new
+  end
 end

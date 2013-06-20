@@ -6,6 +6,7 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :movie
-
+  has_many :votes, as: :votable #polymorphic, needs to be checked
+  
   attr_accessible :description, :movie_id, :score, :user_id
 end
