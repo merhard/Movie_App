@@ -7,24 +7,25 @@ describe 'authentication' do
    # x = User.create!(:email => "m@m.com",:password => "password")
    
     visit new_user_session_path
-    fill_in "Email", with: 'm@m.com'
+    fill_in "Email", with: user.email
     fill_in "Password", with: 'password'
 
-    click_on 'Sign in' 
+    click_button 'Sign in' 
 
-    expect(page).to have_content('Listing movies')
+    expect(page).to have_content("Signed in successfully.")
 
   end
 
   it "can sign out of an account" do 
     visit new_user_session_path
-    fill_in "Email", with: 'm@m.com'
+    fill_in "Email", with: user.email
     fill_in "Password", with: 'password'
 
-    click_on 'Sign in' 
+    click_button 'Sign in' 
+    expect(page).to have_content("Signed in successfully.")
 
     
-    click_on 'Sign out'
+    click_link 'Sign out'
 
     expect(page).to have_content('Listing movies')
   end
