@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :movie do
-    title "MyString"
+    sequence(:title){|n| "movie#{n}" }
     synopsis "MyText"
 
     factory :movie_with_reviews do

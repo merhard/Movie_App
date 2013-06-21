@@ -38,6 +38,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include AuthenticationHelper
+
   config.include Warden::Test::Helpers
   Warden.test_mode!
 end

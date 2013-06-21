@@ -6,4 +6,13 @@ class Movie < ActiveRecord::Base
   has_many :reviews
 
   attr_accessible :synopsis, :title
+
+
+
+  def self.most_recent(amount = 3 )
+    order('created_at DESC').limit(amount)
+ 
+  end
 end
+
+

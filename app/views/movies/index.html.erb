@@ -20,5 +20,15 @@
 <%= link_to 'Add a Movie', new_movie_path %>
 
 <br/>
-<%= link_to 'Signup', new_user_registration_path %>
-<%= link_to 'Signout', destroy_user_session_path, method: :delete %>
+
+
+<h1>Most Recently Added</h1></br>
+
+<ul>
+  <% @recent_movies.each do |movie| %>
+    <li><%= movie.title %></li>
+  <%end%>
+</ul> 
+  
+
+
