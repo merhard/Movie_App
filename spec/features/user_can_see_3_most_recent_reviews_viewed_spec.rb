@@ -12,19 +12,18 @@ feature "3 recent reviews that were read" do
 let!(:user) {FactoryGirl.create(:user)}
 
   it "shows 3 most recently read reviews for a logged in user" do
-    reviews = FactoryGirl.create_list(:review,3)
-    visit new_user_session_path
-    fill_in "Email", with: 'm@m.com'
-    fill_in "Password", with: 'password'
-    click_button 'Sign in'  
+    reviews = FactoryGirl.create_list(:review,4)
+    sign_in_as(user)
+    
+    visit_some_review_pages(reviews)
 
-    visit movie_reviews_path(reviews[0].movie)
-    expect(page).to have_content("Movie Review Description")
-
-
-
+    expect(user.most_recent_reviews.count).to eql(3)
   end
 
-
-
+  def visit_some_review_pages(reviews)
+    reviews.each do |rev|
+      visit movie_review_path(rev[:movie_id],rev[:id])
+    end 
+    
+  end
 end

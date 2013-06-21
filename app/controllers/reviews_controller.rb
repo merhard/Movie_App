@@ -20,4 +20,13 @@ class ReviewsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def show 
+    @review = Review.find(params[:id])
+    # create ReviewLog for this review and this user
+    # current_user.review_views.build(review: @review)
+    current_user.review_logs.create!(:review => @review)
+
+  end
 end
+

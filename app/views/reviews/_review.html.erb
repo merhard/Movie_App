@@ -1,4 +1,5 @@
 <div class='review'>
   <%= review.description %>
   <%= review.score %>
+  <%= link_to "show", movie_review_path(review.movie,review) %> 
 </div>
